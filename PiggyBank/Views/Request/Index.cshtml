@@ -1,0 +1,48 @@
+﻿@model IEnumerable<PiggyBank.Models.RequestModel>;
+
+@{
+    ViewData["Title"] = "Request Index";
+}
+
+<div class="text-center">
+    <h1 class="display-4">This is the Request Index page</h1>
+    <p>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">@Html.DisplayNameFor(req => req.RequestId)</th>
+                    <th scope="col">@Html.DisplayNameFor(req => req.RequestOwner)</th>
+                    <th scope="col">@Html.DisplayNameFor(req => req.Status)</th>
+                    <th scope="col">@Html.DisplayNameFor(req => req.Title)</th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var req in Model)
+            {
+                string reqOwnerName = req.RequestOwner.FirstName + " " + req.RequestOwner.LastName;
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => req.RequestId)</td>
+                    <td> @Html.DisplayFor(modelItem => reqOwnerName)</td>
+                    <td>@Html.DisplayFor(modelItem => req.Status)</td>
+                    <td>@Html.DisplayFor(modelItem => req.Title)</td>
+                    <td>@Html.ActionLink("Create", "Create", req.RequestId)</td>
+                    <td>@Html.ActionLink("Edit", "Edit", req.RequestId)</td>
+                    <td>@Html.ActionLink("Delete", "Delete", req.RequestId)</td>
+
+                </tr>
+
+            }
+            </tbody>
+
+        </table>
+    </p>
+    <p>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Request" asp-action="Create">Create a new request.</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="Request" asp-action="Edit">Or edit an existing one.</a>
+        </li>
+    </p>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+</div>
