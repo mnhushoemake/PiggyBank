@@ -1,4 +1,6 @@
-﻿namespace EFDataAccess.Models;
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace EFDataAccess.Models;
 
 public class Request
 {
@@ -13,6 +15,7 @@ public class Request
         Cancelled = 7
     }
 
+    [Key]
     public int RequestId { get; set; } 
     public User RequestOwner { get; set; } 
 
